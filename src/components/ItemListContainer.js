@@ -6,12 +6,12 @@ import "../styles/components/ItemListContainer.css";
 
 
 function ItemListContainer(url){
+
+    const initial=1;
     
     const [products, setProducts] = useState([]);
 
     const {categoryId} = useParams();
-
-    console.log(categoryId);
 
     useEffect(()=>{
         fetch('/Item1.json')
@@ -23,12 +23,17 @@ function ItemListContainer(url){
         .catch(err => console.log(err))
     },[categoryId]);
     
-    console.log(products);
+    useEffect(()=>{
+        if (products.length >= 4 && products[3]) {
+            console.log(products[3].rating.count);
+        }
+    },[products])
+    
 
     return(
         <div className="catalog">
             {
-                products?.map(el => <Item item={el} key={el.id}/>)
+                products?.map(el => <Item item={el} key={el.id} stock={el.rating.count} initial={initial}/>)
             }
         </div>
     )

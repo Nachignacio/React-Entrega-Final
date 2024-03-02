@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import "../styles/components/ItemDetailContainer.css"
+import ItemDetail from './ItemDetail';
 
 const ItemDetailContainer = () => {
     
+    
+
+    const initialCounter=1;
+
     const [details, setDetails] = useState({});
 
     const {detailId} = useParams();
@@ -21,14 +26,11 @@ const ItemDetailContainer = () => {
     
     return (
         <div className="detail">
-            <h1>{details.title}</h1>
-            <img src={details.image} alt={details.title}/>
-            <p>{details.description}</p>
-            <button>
-                <Link to="/">
-                    Back
-                </Link>
-            </button>
+            <ItemDetail title={details.title} image={details.image} alt={details.title} 
+            description={details.description} 
+            count={details.rating? details.rating.count : 0} //Si no le pongo este ternario no me toma el valor count, por alguna razon
+            price={details.price} init={initialCounter}/>
+            
         </div>
     )
 }

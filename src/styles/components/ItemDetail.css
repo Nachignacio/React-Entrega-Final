@@ -1,0 +1,15 @@
+.ItemDetail{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ItemDetail button{
+    border-radius: 5px;
+    background-color: aqua;
+    text-decoration: none;
+}
+
+.link{
+    text-decoration: none;
+}
