@@ -1,0 +1,10 @@
+header{
+    background-color: grey;
+    img{
+        position: absolute;
+        right: 2vw;
+        top: 15px;
+        height: 75px;
+        width: 75px;
+    }
+}

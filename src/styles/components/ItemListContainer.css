@@ -1,0 +1,42 @@
+.catalog{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.catalog .Item{
+    width: 300px;
+    padding: 20px;
+    margin-top: 20px;
+    border-style: solid;
+    border-radius: 15px;
+    display: flex;
+    justify-items: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(173, 173, 173);
+    -webkit-box-shadow: 17px 18px 33px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 17px 18px 33px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 18px 25px 0px rgba(0,0,0,0.75);
+}
+
+.catalog .Item h1{
+    position: relative;
+    }
+
+.catalog .Item img{
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border-style: solid; 
+}
+
+.catalog .Item p{
+    margin: 20px 0;
+    border-style: solid;
+}
+
+.catalog .Item button{
+    margin-top: 20px;
+}

@@ -1,0 +1,27 @@
+.background footer{
+    margin-top: 60px;
+    height: 20px;
+    background-color: darkcyan;
+    border-style: solid;
+    padding: 15px;
+}
+
+.background header{
+    display: flex;
+    justify-content: center;
+}
+
+.background{
+    background-color: radial-gradient(darkcyan,grey);
+}
+
+.background .logo{
+    position: absolute;
+    right: 25px;
+    height: 50px;
+}
+
+.background h1{
+    display: inline;
+    margin: 30px;
+}

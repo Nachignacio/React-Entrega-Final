@@ -1,0 +1,8 @@
+#root{
+    background: radial-gradient( darkcyan 30%, grey 70%);
+    height: 100%;
+}
+
+*{
+    margin: 0px;
+}
