@@ -19,7 +19,6 @@ function ItemDetail({title, image, alt, description, count, price, init, onAdd, 
                     Back
                 </Link>
             </button>
-
             
         </div>
     )

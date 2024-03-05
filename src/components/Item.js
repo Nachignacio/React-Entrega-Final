@@ -7,9 +7,6 @@ import "../styles/components/Item.css"
 const Item = ({item, initial, stock}) => {
 
 
-    function onAdd(cantidad){
-        console.log(cantidad);
-    }
 
     return (
         <div className="Item">
@@ -18,12 +15,12 @@ const Item = ({item, initial, stock}) => {
             <h2>
                 ${item.price}
             </h2>
-            <button>
+            <button onClick={() => console.log("itemId es: ", item.id)}>
                 <Link to={`/detail/${item.id}`}>
                     View details
                 </Link>
             </button>
-            <ItemCounter init={initial} stock={stock} item={item} onAdd={onAdd}/>
+            <ItemCounter init={initial} stock={stock} item={item}/>
         </div>
     )
 }

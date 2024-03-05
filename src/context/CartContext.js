@@ -19,7 +19,7 @@ export function CartProvider({children}){
                 if((element.cant + cant) < stock)
                     return {...element, cant: element.cant + cant};
                 else
-                    return {...element, cant: element.cant + (stock - element.cant)}
+                    return {...element, cant: element.cant + (stock - element.cant)} //Hago esto para que la cantidad sumada no supere el stock
             }
             return element;
             });

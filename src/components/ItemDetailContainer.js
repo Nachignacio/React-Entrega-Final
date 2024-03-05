@@ -13,6 +13,8 @@ const ItemDetailContainer = () => {
 
     const {detailId} = useParams();
 
+    console.log(detailId);
+
     useEffect(()=>{
         fetch('/Item1.json')
         .then(res => res.json())

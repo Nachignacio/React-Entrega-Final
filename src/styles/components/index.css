@@ -1,8 +1,17 @@
 #root{
-    background: radial-gradient( darkcyan 30%, grey 70%);
+    background-color: grey;
     height: 100%;
 }
 
 *{
     margin: 0px;
+}
+
+button{
+    border-radius: 5px;
+    background-color: darkcyan;
+}
+
+button a{
+    text-decoration: none;
 }

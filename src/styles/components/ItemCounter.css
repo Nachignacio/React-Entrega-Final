@@ -14,12 +14,6 @@
     left: 20px;
 }
 
-.ItemCounter button{
-    border-radius: 5px;
-    background-color: aqua;
-    text-decoration: none;
-}
-
 .ItemCounter span{
     margin: 10px;
     font-weight: bold;

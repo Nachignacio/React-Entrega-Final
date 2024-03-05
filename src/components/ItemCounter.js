@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import {CartContext} from "../context/CartContext";
 
 
-function ItemCounter({init, stock, item, onAdd}){
+function ItemCounter({init, stock, item}){
 
     const [counter, setCounter] = useState(init);
 
@@ -14,7 +14,7 @@ function ItemCounter({init, stock, item, onAdd}){
 
     const [cantAgregada, setCantAgregada] = useState(0);
 
-    const {cart, addProduct, clearCart, removeItem} = useContext(CartContext);
+    const {cart, addProduct} = useContext(CartContext);
 
 
 
@@ -24,10 +24,6 @@ function ItemCounter({init, stock, item, onAdd}){
         setCantComprada(cant);
         console.log("El cart es: ", cart);
     }
-
-    useEffect(()=>{
-        console.log("Updated cart", cart);
-    },[cart])
 
     /*useEffect(() => {
         setAddedCart(addedCart + cantidadComprada)
@@ -82,12 +78,12 @@ function ItemCounter({init, stock, item, onAdd}){
                             </Link>
                         </button>
                         <br/>
-                        <button  onClick={() => handleOnAdd(counter)} disabled={!stock || (addedCart == stock)}> 
+                        <button  onClick={() => handleOnAdd(counter)} disabled={addedCart >= stock}> 
                         Add to Cart
                         </button>
                     </div>
                 ) : (
-                    <button onClick={() => handleOnAdd(counter)} disabled={!stock || (addedCart == stock)}>
+                    <button onClick={() => handleOnAdd(counter)} disabled={addedCart >= stock}>
                     Add to Cart
                     </button>
                 )
