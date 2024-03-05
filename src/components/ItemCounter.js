@@ -1,32 +1,61 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "../styles/components/ItemCounter.css";
 import { Link } from "react-router-dom";
+import {CartContext} from "../context/CartContext";
 
 
-function ItemCounter({init, stock, onAdd}){
+function ItemCounter({init, stock, item, onAdd}){
 
     const [counter, setCounter] = useState(init);
 
-    const[cantidadComprada, setCantidadComprada] = useState(0);
+    const [cantComprada, setCantComprada] = useState(0);
 
     const[addedCart, setAddedCart] = useState (0);
 
-    useEffect(() => {
+    const [cantAgregada, setCantAgregada] = useState(0);
+
+    const {cart, addProduct, clearCart, removeItem} = useContext(CartContext);
+
+
+
+    function handleOnAdd(cant){
+        console.log("Item ID es: ", item.id);
+        addProduct(item, cant, stock);
+        setCantComprada(cant);
+        console.log("El cart es: ", cart);
+    }
+
+    useEffect(()=>{
+        console.log("Updated cart", cart);
+    },[cart])
+
+    /*useEffect(() => {
         setAddedCart(addedCart + cantidadComprada)
     },[cantidadComprada])
-
-    function onAdd(cantidad){
+*/
+    /*function onAdd(cantidad){
         setCantidadComprada(cantidad);
-    }
+    }*/
+
+    useEffect(() => {
+        const filteredProduct = cart.find((element) => element.id === item.id);
+        if (filteredProduct) { /*Chequeo si existe filteredProduct */
+            setAddedCart(filteredProduct.cant);
+        } else {
+            setAddedCart(0);
+        }
+    }, [item.id, cart]); // Le pongo estas dependencias para que solo se actualice cuando cambio el cart del item.id
+
+    
 
     function handleSum(evt){
         if(counter < stock)
-            setCounter(counter + 1);
+            setCounter(prevCounter => prevCounter + 1);
     }
 
     function handleRest(evt){
         if(counter > 0)
-            setCounter(counter - 1);
+            setCounter(prevCounter => prevCounter - 1);
     }
 
     return(
@@ -45,7 +74,7 @@ function ItemCounter({init, stock, onAdd}){
         </span>
         <div>
             {
-                cantidadComprada > 0 ? (
+                counter > 0 ? (
                     <div className="cartButtons">
                         <button>
                             <Link to="/cart" >
@@ -53,12 +82,12 @@ function ItemCounter({init, stock, onAdd}){
                             </Link>
                         </button>
                         <br/>
-                        <button onClick={() => setCantidadComprada(counter)} disabled={!stock}>
+                        <button  onClick={() => handleOnAdd(counter)} disabled={!stock || (addedCart == stock)}> 
                         Add to Cart
                         </button>
                     </div>
                 ) : (
-                    <button onClick={() => setCantidadComprada(counter)} disabled={!stock}>
+                    <button onClick={() => handleOnAdd(counter)} disabled={!stock || (addedCart == stock)}>
                     Add to Cart
                     </button>
                 )

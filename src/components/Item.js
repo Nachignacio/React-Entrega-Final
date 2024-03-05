@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import ItemCounter from './ItemCounter';
+import "../styles/components/Item.css"
 
 
-
-const Item = ({item, initial}) => {
+const Item = ({item, initial, stock}) => {
 
 
     function onAdd(cantidad){
@@ -23,7 +23,7 @@ const Item = ({item, initial}) => {
                     View details
                 </Link>
             </button>
-            <ItemCounter init={initial} stock={item.rating.count} onAdd={onAdd}/>
+            <ItemCounter init={initial} stock={stock} item={item} onAdd={onAdd}/>
         </div>
     )
 }

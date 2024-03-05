@@ -23,12 +23,6 @@ function ItemListContainer(url){
         .catch(err => console.log(err))
     },[categoryId]);
     
-    useEffect(()=>{
-        if (products.length >= 4 && products[3]) {
-            console.log(products[3].rating.count);
-        }
-    },[products])
-    
 
     return(
         <div className="catalog">
