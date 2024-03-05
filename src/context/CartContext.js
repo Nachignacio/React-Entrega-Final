@@ -9,17 +9,17 @@ export function CartProvider({children}){
 
     function isInCart(productId){
         let foundItem = cart.find((prod) => prod.id === productId);
-        return !!foundItem;
+        return !!foundItem; //Esto convierte al undefined en un booleano falso
     }
 
-    function addProduct(item, cant, stock){
+    function addProduct(item, cant){
         if(isInCart(item.id)){
             let newCart = cart.map((element) => {
             if(element.id === item.id){
-                if((element.cant + cant) < stock)
+                if((element.cant + cant) < item.rating.count)
                     return {...element, cant: element.cant + cant};
                 else
-                    return {...element, cant: element.cant + (stock - element.cant)} //Hago esto para que la cantidad sumada no supere el stock
+                    return {...element, cant: element.cant + (item.rating.count - element.cant)} //Hago esto para que la cantidad sumada no supere el stock
             }
             return element;
             });

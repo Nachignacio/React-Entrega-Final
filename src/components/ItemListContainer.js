@@ -27,7 +27,7 @@ function ItemListContainer(url){
     return(
         <div className="catalog">
             {
-                products?.map(el => <Item item={el} key={el.id} stock={el.rating.count} initial={initial}/>)
+                products?.map(el => <Item item={el} key={el.id} initial={initial}/>)
             }
         </div>
     )

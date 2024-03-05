@@ -4,22 +4,21 @@ import "../styles/components/ItemDetail.css"
 
 
 
-function ItemDetail({title, image, alt, description, count, price, init, onAdd, cantidadComprada}){
+function ItemDetail({item, init}){
 
 
     return(
         <div className="ItemDetail">
-            <h1>{title}</h1>
-            <img src={image} alt={alt}/>
-            <h2>${price}</h2>
-            <p>{description}</p>
-            <ItemCounter init={init} stock={count} onAdd={onAdd} cantidadComprada={cantidadComprada} title={title} count={count} price={price}/>
+            <h1>{item.title}</h1>
+            <img src={item.image} alt={item.title}/>
+            <h2>${item.price}</h2>
+            <p>{item.description}</p>
+            <ItemCounter init={init} item={item}/>
             <button>
                 <Link to="/" className="link">
                     Back
                 </Link>
             </button>
-            
         </div>
     )
 }

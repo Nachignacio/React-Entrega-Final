@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import {CartContext} from "../context/CartContext";
 
 
-function ItemCounter({init, stock, item}){
+function ItemCounter({init, item}){
 
     const [counter, setCounter] = useState(init);
 
@@ -19,19 +19,17 @@ function ItemCounter({init, stock, item}){
 
 
     function handleOnAdd(cant){
-        console.log("Item ID es: ", item.id);
-        addProduct(item, cant, stock);
+        
+        addProduct(item, cant);
         setCantComprada(cant);
         console.log("El cart es: ", cart);
     }
 
-    /*useEffect(() => {
-        setAddedCart(addedCart + cantidadComprada)
-    },[cantidadComprada])
-*/
-    /*function onAdd(cantidad){
-        setCantidadComprada(cantidad);
-    }*/
+    useEffect(() => {
+        setAddedCart(addedCart + cantComprada)
+    },[cantComprada])
+
+
 
     useEffect(() => {
         const filteredProduct = cart.find((element) => element.id === item.id);
@@ -45,7 +43,7 @@ function ItemCounter({init, stock, item}){
     
 
     function handleSum(evt){
-        if(counter < stock)
+        if(counter < item.rating.count)
             setCounter(prevCounter => prevCounter + 1);
     }
 
@@ -66,7 +64,7 @@ function ItemCounter({init, stock, item}){
             </button>
         </div>
         <span>
-            <br/>Stock: {stock}
+            <br/>Stock: {item.rating?.count}
         </span>
         <div>
             {
@@ -78,12 +76,12 @@ function ItemCounter({init, stock, item}){
                             </Link>
                         </button>
                         <br/>
-                        <button  onClick={() => handleOnAdd(counter)} disabled={addedCart >= stock}> 
+                        <button  onClick={() => handleOnAdd(counter)} disabled={addedCart >= item.rating.count}> 
                         Add to Cart
                         </button>
                     </div>
                 ) : (
-                    <button onClick={() => handleOnAdd(counter)} disabled={addedCart >= stock}>
+                    <button onClick={() => handleOnAdd(counter)} disabled={addedCart >= item.rating.count}>
                     Add to Cart
                     </button>
                 )

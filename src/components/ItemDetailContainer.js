@@ -13,13 +13,14 @@ const ItemDetailContainer = () => {
 
     const {detailId} = useParams();
 
-    console.log(detailId);
+    console.log("detailID is: ", detailId);
 
     useEffect(()=>{
         fetch('/Item1.json')
         .then(res => res.json())
         .then(re => {
         let detailed = re.find((product) => product.id == detailId);
+            console.log("Feched details: ", detailed);
             setDetails(detailed)
         })
         .catch(err => console.log(err))
@@ -28,11 +29,9 @@ const ItemDetailContainer = () => {
     
     return (
         <div className="detail">
-            <ItemDetail title={details.title} image={details.image} alt={details.title} 
-            description={details.description} 
-            count={details.rating? details.rating.count : 0} //Si no le pongo este ternario no me toma el valor count, por alguna razon
-            price={details.price} init={initialCounter}/>
-            
+            {details && Object.keys(details).length !== 0 && (
+                <ItemDetail item={details} init={initialCounter}/>
+            )}
         </div>
     )
 }

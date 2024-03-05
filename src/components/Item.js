@@ -4,7 +4,7 @@ import ItemCounter from './ItemCounter';
 import "../styles/components/Item.css"
 
 
-const Item = ({item, initial, stock}) => {
+const Item = ({item, initial}) => {
 
 
 
@@ -20,7 +20,7 @@ const Item = ({item, initial, stock}) => {
                     View details
                 </Link>
             </button>
-            <ItemCounter init={initial} stock={stock} item={item}/>
+            <ItemCounter init={initial} item={item}/>
         </div>
     )
 }
