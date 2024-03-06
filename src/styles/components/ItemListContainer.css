@@ -5,7 +5,7 @@
 }
 
 .catalog .Item{
-    width: 300px;
+    width: 19vw;
     padding: 20px;
     margin-top: 20px;
     border-style: solid;
@@ -23,6 +23,7 @@
 
 .catalog .Item h1{
     position: relative;
+    font-size: larger;
     }
 
 .catalog .Item img{

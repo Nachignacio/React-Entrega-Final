@@ -1,9 +1,15 @@
 .background footer{
-    margin-top: 60px;
-    height: 20px;
+    position: relative; /* Change to fixed */
+    bottom: 0;
+    left: 0;
+    width: 100%;;
+    max-width: 100vw;
+    height: 30px;
     background-color: darkcyan;
     border-style: solid;
-    padding: 15px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    
 }
 
 .background header{
@@ -12,7 +18,11 @@
 }
 
 .background{
+    position: relative;
     background-color: radial-gradient(darkcyan,grey);
+    width: 100%;
+    max-width: 100vw;
+    min-height: 100vh; /* La unica forma de que el fondo ocupe todo el viewport*/
 }
 
 .background .logo{
