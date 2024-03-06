@@ -5,9 +5,31 @@
     -moz-box-shadow: 17px 18px 33px 0px rgba(0,0,0,0.75);
     box-shadow: 10px 18px 25px 0px rgba(0,0,0,0.75);
     border-style: solid;
-    padding: 25px;
-    margin: 25px;
+    height: 50px;
+    margin: 15px;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    align-items: center;
 }
+
+.cartItem #quantity{
+    position: absolute;
+    left: 50%;
+}
+
+.cartItem h3{
+    position: absolute;
+    left: 5%;
+    width: 40%;
+}
+
+.cartItem #pricePerUnit{
+    position: absolute;
+    left: 65%;
+}
+
+.cartItem #subtotal{
+    position: absolute;
+    left: 80%;
+}
+
