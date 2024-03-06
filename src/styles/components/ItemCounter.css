@@ -30,8 +30,12 @@
     align-items: center;
 }
 
-.cartButtons a{
-    text-decoration: none;
+.cartButtons button:hover .cartLink{
+    color: white;
+}
+
+.cartButtons button .cartLink{
+    transition: 0.5s;
 }
 
 

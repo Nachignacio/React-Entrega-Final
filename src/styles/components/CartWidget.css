@@ -1,0 +1,26 @@
+.cartWidget img{
+    position: absolute;
+    top: 0px;
+    right: 40px;
+    height: 30px;
+}
+
+.cartWidget{
+    position: relative;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    height: 30px;
+    width: 80px;
+    right: 2%;
+    top: 3px;
+    text-decoration: none;
+}
+
+
+.cartWidget p{
+    position: relative;
+    right: -45px;
+    top: 5px;
+    font-size: 20px;
+}

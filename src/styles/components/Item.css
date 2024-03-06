@@ -5,3 +5,11 @@
 .Item h2{
     margin-top: 30px;
 }
+
+.Item .viewDetail{
+    transition: 0.5s;
+}
+
+.Item .viewDetail:hover{
+    color:white;
+}

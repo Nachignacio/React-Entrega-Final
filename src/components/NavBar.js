@@ -1,6 +1,5 @@
 import ListItem from "./ListItem";
-import Cart from "../img/cart.png";
-import CartCounter from "../img/cartcounter.png";
+import CartWidget from "./CartWidget";
 import "../styles/components/NavBar.css";
 
 function NavBar(){
@@ -11,10 +10,7 @@ function NavBar(){
                     <ListItem texto="Clothing"/>
                     <ListItem texto="Jewelery"/>
                     <ListItem texto="Electronics"/>
-                    <li>
-                        <img src={Cart} id="cart" alt="cart"/>
-                        <img src={CartCounter} id="cartCounter" alt="cart"/>
-                    </li>
+                    <CartWidget/>
                 </ul>
             </nav>)
 }

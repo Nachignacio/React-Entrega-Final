@@ -18,8 +18,37 @@
     width: 150px;
 }
 
-.Cart #backButton{
+.Cart #products{
     display: block;
     width: 100px;
     margin: 25px;
+    transition: 0.5s;
+}
+
+.Cart #productLink{
+    transition: 0.5s;
+    text-decoration: none;
+}
+
+.Cart #productLink:hover{
+    color: white;
+}
+
+.Cart #checkout{
+    margin: 25px;
+    padding: 10px;
+    width: 25%;
+}
+
+.Cart #checkout:hover{
+    color: white;
+}
+
+
+.Cart #checkoutLink:hover{
+    color:white;
+}
+
+.Cart #checkoutButton{
+    width: 100%;
 }

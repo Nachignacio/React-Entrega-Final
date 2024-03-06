@@ -1,10 +1,12 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const CartContext = createContext();
 
 export function CartProvider({children}){
 
     const [cart, setCart] = useState([]);
+
+    const [quantity, setQuantity] = useState(0);
 
 
     function isInCart(productId){
@@ -38,8 +40,20 @@ export function CartProvider({children}){
     function clearCart(){
         setCart([]);
     }   
+    
+    
+    
+    useEffect(()=>{
+    let totalQuantity = 0;
+    cart.forEach((prod) => {
+        totalQuantity += prod.cant;
+    });
+    setQuantity(totalQuantity);
+},[cart])
+    
+
     return(
-        <CartContext.Provider value={{cart, addProduct, clearCart, removeItem}}>
+        <CartContext.Provider value={{cart, addProduct, clearCart, removeItem, quantity}}>
             {children}
         </CartContext.Provider>
     )

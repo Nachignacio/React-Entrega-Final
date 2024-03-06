@@ -8,14 +8,27 @@
 }
 
 button{
-    border-radius: 5px;
+    border-radius: 50px;
     background-color: darkcyan;
     border-style: solid;
     border-color: rgb(69, 101, 143);
     border-width: 4px;
     padding: 5px;
+    cursor: pointer;
+    transition: 0.5s;
+    color: black;
+
+}
+
+button:hover{
+    background-color: black;
+    color: white;
 }
 
 button a{
     text-decoration: none;
+}
+
+button a:visited{
+    color: black;
 }

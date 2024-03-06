@@ -70,8 +70,8 @@ function ItemCounter({init, item}){
             {
                 counter > 0 ? (
                     <div className="cartButtons">
-                        <button>
-                            <Link to="/cart" >
+                        <button id="cartButton">
+                            <Link to="/cart" className="cartLink">
                                 Go to Cart
                             </Link>
                         </button>

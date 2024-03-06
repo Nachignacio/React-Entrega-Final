@@ -4,8 +4,6 @@ import "../styles/components/ItemDetailContainer.css"
 import ItemDetail from './ItemDetail';
 
 const ItemDetailContainer = () => {
-    
-    
 
     const initialCounter=1;
 
