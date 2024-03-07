@@ -10,13 +10,13 @@ const Item = ({item, initial}) => {
 
     return (
         <div className="Item">
-            <h1>{item.title}</h1>
-            <img src={item.image} alt={item.description}/>
+            <h1>{item.Nombre}</h1>
+            <img src={item.Imagen} alt={item.Nombre}/>
             <h2>
-                ${item.price}
+                ${item.Precio}
             </h2>
-            <Link to={`/detail/${item.id}`} className="viewDetail">
-                <button onClick={() => console.log("itemId es: ", item.id)}>
+            <Link to={`/detail/${item.ID}`} className="viewDetail">
+                <button onClick={() => console.log("itemId es: ", item.ID)}>
                     View details
                 </button>
             </Link>

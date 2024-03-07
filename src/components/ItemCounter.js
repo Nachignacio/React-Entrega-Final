@@ -12,8 +12,6 @@ function ItemCounter({init, item}){
 
     const[addedCart, setAddedCart] = useState (0);
 
-    const [cantAgregada, setCantAgregada] = useState(0);
-
     const {cart, addProduct} = useContext(CartContext);
 
 
@@ -43,7 +41,7 @@ function ItemCounter({init, item}){
     
 
     function handleSum(evt){
-        if(counter < item.rating.count)
+        if(counter < item.Stock)
             setCounter(prevCounter => prevCounter + 1);
     }
 
@@ -64,7 +62,7 @@ function ItemCounter({init, item}){
             </button>
         </div>
         <span>
-            <br/>Stock: {item.rating?.count}
+            <br/>Stock: {item.Stock}
         </span>
         <div>
             {
@@ -76,12 +74,12 @@ function ItemCounter({init, item}){
                             </Link>
                         </button>
                         <br/>
-                        <button  onClick={() => handleOnAdd(counter)} disabled={addedCart >= item.rating.count}> 
+                        <button  onClick={() => handleOnAdd(counter)} disabled={addedCart >= item.Stock}> 
                         Add to Cart
                         </button>
                     </div>
                 ) : (
-                    <button onClick={() => handleOnAdd(counter)} disabled={addedCart >= item.rating.count}>
+                    <button onClick={() => handleOnAdd(counter)} disabled={addedCart >= item.Stock}>
                     Add to Cart
                     </button>
                 )

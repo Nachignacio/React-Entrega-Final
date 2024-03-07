@@ -9,10 +9,10 @@ function ItemDetail({item, init}){
 
     return(
         <div className="ItemDetail">
-            <h1>{item.title}</h1>
-            <img src={item.image} alt={item.title}/>
-            <h2>${item.price}</h2>
-            <p>{item.description}</p>
+            <h1>{item.Nombre}</h1>
+            <img src={item.Imagen} alt={item.Nombre}/>
+            <h2>${item.Precio}</h2>
+            <p>{item.Detalle}</p>
             <ItemCounter init={init} item={item}/>
             <button>
                 <Link to="/" className="link">

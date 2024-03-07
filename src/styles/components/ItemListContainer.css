@@ -8,6 +8,7 @@
 .catalog .Item{
     margin: 15px;
     width: 19vw;
+    height: 50%;
     padding: 20px;
     margin-top: 20px;
     border-style: solid;

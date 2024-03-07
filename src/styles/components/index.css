@@ -1,5 +1,5 @@
 #root{
-    background-color: grey;
+    background-color: rgb(53, 95, 129);
     height: 100%;
 }
 
@@ -17,6 +17,7 @@ button{
     cursor: pointer;
     transition: 0.5s;
     color: black;
+    font-size: large;
 
 }
 

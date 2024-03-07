@@ -10,18 +10,18 @@ export function CartProvider({children}){
 
 
     function isInCart(productId){
-        let foundItem = cart.find((prod) => prod.id === productId);
+        let foundItem = cart.find((prod) => prod.ID === productId);
         return !!foundItem; //Esto convierte al undefined en un booleano falso
     }
 
     function addProduct(item, cant){
-        if(isInCart(item.id)){
+        if(isInCart(item.ID)){
             let newCart = cart.map((element) => {
-            if(element.id === item.id){
-                if((element.cant + cant) < item.rating.count)
+            if(element.ID === item.ID){
+                if((element.cant + cant) < item.Stock)
                     return {...element, cant: element.cant + cant};
                 else
-                    return {...element, cant: element.cant + (item.rating.count - element.cant)} //Hago esto para que la cantidad sumada no supere el stock
+                    return {...element, cant: element.cant + (item.Stock - element.cant)} //Hago esto para que la cantidad sumada no supere el stock
             }
             return element;
             });
@@ -33,7 +33,7 @@ export function CartProvider({children}){
     }
 
     function removeItem(itemId){
-        let cartNuevo = cart.filter((prod) => prod.id !== itemId);
+        let cartNuevo = cart.filter((prod) => prod.ID !== itemId);
         setCart(cartNuevo);
     }
 

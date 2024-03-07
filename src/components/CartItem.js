@@ -9,11 +9,11 @@ function CartItem({product}){
 
     return(
         <div className="cartItem">
-            <h3>{product.title}</h3>
+            <h3>{product.Nombre}</h3>
             <p id="quantity">Quantity: {product.cant}</p>
-            <p id="pricePerUnit">Price per unit: ${product.price}</p>
-            <p id="subtotal">Subtotal: ${product.price * product.cant}</p>
-            <button onClick={()=> removeItem(product.id)}>X</button>
+            <p id="pricePerUnit">Price per unit: ${product.Precio}</p>
+            <p id="subtotal">Subtotal: ${product.Precio * product.cant}</p>
+            <button onClick={()=> removeItem(product.ID)}>X</button>
         </div>
     )
 }
