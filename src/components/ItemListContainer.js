@@ -39,7 +39,6 @@ function ItemListContainer(url){
                 ...doc.data(),
                 id:doc.id
             }))
-            console.log("CategoryID es: ", categoryId);
             storedProducts = categoryId? filteredData.filter((prod) => prod.Categoria === categoryId) : filteredData;
             setProducts(storedProducts);
         }

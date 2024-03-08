@@ -1,14 +1,14 @@
 import {initializeApp} from "firebase/app";
 import {getFirestore} from "firebase/firestore";
-import {getAuth} from "firebase/auth";
+import {getAuth, GoogleAuthProvider} from "firebase/auth";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCnBjC2dSYxYi94_GzmtYX1obIGp4nbE8I",
-    authDomain: "entrega-final-react-ignacio.firebaseapp.com",
-    projectId: "entrega-final-react-ignacio",
-    storageBucket: "entrega-final-react-ignacio.appspot.com",
-    messagingSenderId: "998401752447",
-    appId: "1:998401752447:web:2a4b7f43377ff466342e4a"
+    apiKey: process.env.REACT_APP_API_KEY,
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
@@ -16,3 +16,5 @@ const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 
 export const auth = getAuth(app);
+
+export const googleProvider = new GoogleAuthProvider();

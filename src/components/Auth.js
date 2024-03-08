@@ -1,22 +1,48 @@
 import { useEffect, useState } from "react";
-import {auth} from "../config/firebase";
-import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
+import {auth, googleProvider} from "../config/firebase";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, signInWithPopup } from "firebase/auth";
 
 function Auth(){
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [signError, setSignError] = useState(false);
+    const [currentUser, setCurrentUser] = useState({});
 
-    async function signUp(){
-        try{
-            await createUserWithEmailAndPassword(auth, email, password);
-        }
-        catch{
-            setSignError(true);
-            console.log("sign error: ", signError)
-        }
+    function handleSignUp(){
+            createUserWithEmailAndPassword(auth, email, password)
+            .then(() => {setCurrentUser(auth?.currentUser)})
+            .catch(error => {
+                switch (error.code) {
+                    case 'auth/email-already-in-use': {
+                    console.log(`Email address ${email} already in use.`);
+                    signInWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        setCurrentUser(userCredential.user);
+                        console.log("user credential: ", userCredential.user);
+                        })
+                    }
+                    break;
+                    case 'auth/invalid-email':
+                    console.log(`Email address ${email} is invalid.`);
+                    break;
+                    case 'auth/operation-not-allowed':
+                    console.log(`Error during sign up.`);
+                    break;
+                    case 'auth/weak-password':
+                    console.log('Password is not strong enough. Add additional characters including special characters and numbers.');
+                    break;
+                    default:
+                    console.log(error.message);
+                    break;
+                    }
+                setCurrentUser(auth?.currentUser);
+            })
     }
+
+    
+    
+    console.log(auth);
 
     useEffect(
         () => {
@@ -25,10 +51,17 @@ function Auth(){
 
     async function logOut(){
         await signOut(auth);
+        setCurrentUser({});
+        setSignError(false);
     }
 
-    return(
+    function signInWithGoogle(){
+        signInWithPopup(auth, googleProvider);
+        setCurrentUser(auth?.currentUser);
+    }
 
+
+    return(
         <div>
             {auth?.currentUser ? 
                 (
@@ -45,8 +78,8 @@ function Auth(){
                         <input type="text" placeholder="name@email.com" id="email" onChange={(e) => setEmail(e.target.value)}/>
                         <label htmlFor="password">Password: </label>
                         <input type="text" id="password" onChange={(e) => setPassword(e.target.value)}/>
-                        <button onClick={signUp}>SignUp</button>
-                        <button>Log In with Google</button>
+                        <button onClick={handleSignUp}>SignUp</button>
+                        <button onClick={signInWithGoogle}>Log In with Google</button>
                         {signError ? (
                             <div>
                                 <p>Error loging in</p>
