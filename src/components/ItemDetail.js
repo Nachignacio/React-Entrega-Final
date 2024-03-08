@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import ItemCounter from "./ItemCounter";
+import ItemQuantitySelector from "./ItemQuantitySelector";
 import "../styles/components/ItemDetail.css"
+import Description from "./Description";
 
 
 
@@ -12,13 +13,14 @@ function ItemDetail({item, init}){
             <h1>{item.Nombre}</h1>
             <img src={item.Imagen} alt={item.Nombre}/>
             <h2>${item.Precio}</h2>
-            <p>{item.Detalle}</p>
-            <ItemCounter init={init} item={item}/>
-            <button>
-                <Link to="/" className="link">
+            <Description item={item}/>
+            <ItemQuantitySelector init={init} item={item}/>
+            <Link to="/" className="link">
+                <button>
                     Back
-                </Link>
-            </button>
+                </button>
+            </Link>
+            
         </div>
     )
 }

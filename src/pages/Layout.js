@@ -1,14 +1,18 @@
 import {Outlet} from "react-router-dom";
-import NavBar from "../components/NavBar.js"
-import Logo from "../img/pedals.png";
+import NavBar from "../components/NavBar"
 import "../styles/pages/Layout.css";
+import { CartContext } from "../context/CartContext";
+import Auth from "../components/Auth";
 
 function Layout(){
+
+    
+
     return(
         <div className="background">
             <header>
                 <h1> Virtual Store </h1>
-                <img src={Logo} alt="logo" className="logo"/>
+                <Auth/>
             </header>
             <NavBar/>
             <Outlet/>

@@ -2,9 +2,10 @@ import { useContext, useEffect, useState } from "react";
 import "../styles/components/ItemCounter.css";
 import { Link } from "react-router-dom";
 import {CartContext} from "../context/CartContext";
+import AddItemButton from "./AddItemButton";
 
 
-function ItemCounter({init, item}){
+function ItemQuantitySelector({init, item}){
 
     const [counter, setCounter] = useState(init);
 
@@ -64,27 +65,7 @@ function ItemCounter({init, item}){
         <span>
             <br/>Stock: {item.Stock}
         </span>
-        <div>
-            {
-                counter > 0 ? (
-                    <div className="cartButtons">
-                        <button id="cartButton">
-                            <Link to="/cart" className="cartLink">
-                                Go to Cart
-                            </Link>
-                        </button>
-                        <br/>
-                        <button  onClick={() => handleOnAdd(counter)} disabled={addedCart >= item.Stock}> 
-                        Add to Cart
-                        </button>
-                    </div>
-                ) : (
-                    <button onClick={() => handleOnAdd(counter)} disabled={addedCart >= item.Stock}>
-                    Add to Cart
-                    </button>
-                )
-            }   
-        </div>
+        <AddItemButton item={item} counter={counter} handleOnAdd={handleOnAdd} addedCart={addedCart}/>
         <p id="added">
             Added to Cart: {addedCart}
         </p>
@@ -92,4 +73,4 @@ function ItemCounter({init, item}){
     )
 }
 
-export default ItemCounter;
+export default ItemQuantitySelector;

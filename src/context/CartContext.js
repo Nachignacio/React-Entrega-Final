@@ -8,6 +8,7 @@ export function CartProvider({children}){
 
     const [quantity, setQuantity] = useState(0);
 
+    let signedIn = true;
 
     function isInCart(productId){
         let foundItem = cart.find((prod) => prod.ID === productId);
@@ -53,7 +54,7 @@ export function CartProvider({children}){
     
 
     return(
-        <CartContext.Provider value={{cart, addProduct, clearCart, removeItem, quantity}}>
+        <CartContext.Provider value={{cart, addProduct, clearCart, removeItem, quantity, signedIn}}>
             {children}
         </CartContext.Provider>
     )

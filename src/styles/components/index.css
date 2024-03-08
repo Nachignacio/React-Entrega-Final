@@ -1,10 +1,11 @@
 #root{
-    background-color: rgb(53, 95, 129);
+    background-image: url("../img/background-react.jpg");
     height: 100%;
 }
 
 *{
     margin: 0px;
+    padding: 0px;
 }
 
 button{

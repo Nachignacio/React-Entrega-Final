@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import ItemCounter from './ItemCounter';
+import ItemQuantitySelector from './ItemQuantitySelector';
 import "../styles/components/Item.css"
 
 
@@ -20,7 +20,7 @@ const Item = ({item, initial}) => {
                     View details
                 </button>
             </Link>
-            <ItemCounter init={initial} item={item}/>
+            <ItemQuantitySelector init={initial} item={item}/>
         </div>
     )
 }
