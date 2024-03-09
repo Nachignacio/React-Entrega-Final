@@ -7,6 +7,7 @@ export function CartProvider({children}){
     const [cart, setCart] = useState([]);
 
     const [quantity, setQuantity] = useState(0);
+    const [price, setTotalPrice] = useState(0)
 
     let signedIn = true;
 
@@ -46,15 +47,18 @@ export function CartProvider({children}){
     
     useEffect(()=>{
     let totalQuantity = 0;
+    let totalPrice = 0;
     cart.forEach((prod) => {
         totalQuantity += prod.cant;
+        totalPrice += prod.cant * prod.Precio;
     });
     setQuantity(totalQuantity);
+    setTotalPrice(totalPrice);
 },[cart])
     
 
     return(
-        <CartContext.Provider value={{cart, addProduct, clearCart, removeItem, quantity, signedIn}}>
+        <CartContext.Provider value={{cart, addProduct, clearCart, removeItem, quantity, signedIn, price}}>
             {children}
         </CartContext.Provider>
     )

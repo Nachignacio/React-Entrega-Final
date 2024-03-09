@@ -6,11 +6,12 @@ import "../styles/components/Cart.css";
 
 function Cart(){
 
-    const {cart, clearCart, quantity} = useContext(CartContext);
+    const {cart, clearCart, quantity, price} = useContext(CartContext);
 
     return (
         <div className="Cart">
             {cart.length == 0 ? <h1>There are no products in Cart</h1> : cart.map(prod => <CartItem key={prod.ID} product={prod}/>)} 
+            <p className="cartPrice">Total price: ${price}</p>
             <Link to="/" id="productLink">
                 <button id="products">
                 Products

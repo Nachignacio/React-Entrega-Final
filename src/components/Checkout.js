@@ -6,29 +6,36 @@ import { CartContext } from "../context/CartContext";
 import Brief from "./Brief";
 import { addDoc, collection } from "firebase/firestore";
 import {db} from "../config/firebase"
+import { Link } from "react-router-dom";
 
 function Checkout(){
 
-    const {cart} = useContext(CartContext);
+    const {cart, price} = useContext(CartContext);
 
-    const itemsCollectionReference = collection(db, "Ordenes de Compra");
+    const purchaseOrdersReference = collection(db, "Ordenes de Compra");
 
     const [currentUser, setCurrentUser] = useState(null);
 
     let ordenCompra = 1;
+
     async function addPurchaseOrder(){
-        cart.forEach((el) =>  addDoc(itemsCollectionReference, {Nombre: el.Nombre, Cantidad: el.cant}))
+        
+        const purchaseObjects = cart.reduce((acc, cur, index) => ({...acc, [`Nombre${index}`]: cur.Nombre, [`Cantidad${index}`]: cur.cant}),{}) //Adapto lo que tengo en el carrito a la informacion que me interesa para la orden de compra
+
+        console.log("purchaseObjects :", purchaseObjects);
+
+        await addDoc(purchaseOrdersReference, purchaseObjects);
     }
 
-    addPurchaseOrder();
+    
+
     useEffect(() => {
-        // Busco por cambios en el estado de autenticacion
-        const unsubscribe = auth.onAuthStateChanged(user => {
+        addPurchaseOrder(); //Ejecuto la función en cuanto se carga la página de orden de compra
+        console.log("Cart: ",cart)
+        const unsubscribe = auth.onAuthStateChanged(user => { //Chequeo si cambio el estado de autenticacion
             if (user) {
-                // Usuario logueado
                 setCurrentUser(user);
             } else {
-                // No hay usuarios
                 setCurrentUser(null);
             }
         });
@@ -48,10 +55,16 @@ function Checkout(){
             {
                 currentUser ? (<div>
                     <Brief ordenCompra={ordenCompra}/>
+                    
                     <button onClick={logOut}>Sign Out</button>
                     </div>
                     ) : (<Auth/>)
             }
+            <Link to="/" id="productLink">
+                <button id="products">
+                Products
+                </button>
+            </Link>
         </div>
     )
 }

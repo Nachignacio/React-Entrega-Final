@@ -40,9 +40,6 @@ function Auth(){
             })
     }
 
-    
-    
-    console.log(auth);
 
     useEffect(
         () => {
