@@ -3,6 +3,7 @@ import { CartContext } from "../context/CartContext";
 import { addDoc, collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import {db} from "../config/firebase"
 import {auth} from "../config/firebase";
+import "../styles/components/Brief.css"
 
 function Brief(){
 
@@ -10,6 +11,7 @@ function Brief(){
     
     const purchaseOrdersReference = collection(db, "Ordenes de Compra");
     const [ordenesData, setOrdenesData] = useState([]);
+
 
     async function getPurchaseOrder(){ //Obtengo la data de la base de datos
         const ordenes = await getDocs(purchaseOrdersReference)
@@ -59,7 +61,7 @@ function Brief(){
     }
     console.log("purchase: ", purchase);
     return(
-        <div>
+        <div className="brief">
             Your purchase order is:
             {purchase.map((el, index, array) => (
             <div>
@@ -71,7 +73,10 @@ function Brief(){
                 ) : null}
             </div>))}
             <span>
-                Purchase order ID: {ordenCompra ? ordenCompra.id : ""}
+                Purchase order ID: {ordenCompra ? ordenCompra.id : ""}<br/>
+            </span>
+            <span>
+                Ordering user: {auth?.currentUser?.email}
             </span>
             <p>
                 Total price: ${price}

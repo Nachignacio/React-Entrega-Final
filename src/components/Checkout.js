@@ -7,6 +7,7 @@ import Brief from "./Brief";
 import { addDoc, collection } from "firebase/firestore";
 import {db} from "../config/firebase"
 import { Link } from "react-router-dom";
+import "../styles/components/Checkout.css";
 
 function Checkout(){
 
@@ -51,20 +52,22 @@ function Checkout(){
     }
 
     return(
-        <div>
-            {
-                currentUser ? (<div>
-                    <Brief ordenCompra={ordenCompra}/>
-                    
-                    <button onClick={logOut}>Sign Out</button>
-                    </div>
-                    ) : (<Auth/>)
-            }
-            <Link to="/" id="productLink">
-                <button id="products">
-                Products
-                </button>
-            </Link>
+        <div className="checkoutContainer">
+            <div className="checkout">
+                {
+                    currentUser ? (<div>
+                        <Brief ordenCompra={ordenCompra}/>
+                        
+                        <button onClick={logOut}>Sign Out</button>
+                        </div>
+                        ) : (<Auth/>)
+                }
+                <Link to="/" id="productLink">
+                    <button id="products">
+                    Products
+                    </button>
+                </Link>
+            </div>
         </div>
     )
 }
