@@ -1,25 +1,20 @@
-import {Outlet} from "react-router-dom";
+import {Link, Outlet} from "react-router-dom";
 import NavBar from "../components/NavBar"
 import "../styles/pages/Layout.css";
-import { CartContext } from "../context/CartContext";
-import Auth from "../components/Auth";
-import { useState } from "react";
-
+import {auth} from "../config/firebase";
 function Layout(){
 
-    const [authMode, setAuthMode] = useState(false);
-
-    function logInButton(){
-        setAuthMode(true);
-        console.log("Boton");
-    }
-    
 
     return(
         <div className="background">
             <header>
                 <h1> Virtual Store </h1>
-                
+                {auth?.currentUser ? (<p id="current">Current user: &nbsp;
+                    {auth?.currentUser?.email} </p>) : (<Link to="/Auth">
+                    <button>
+                        Sign Up / Log In
+                    </button>
+                </Link>)}
             </header>
             <NavBar/>
             <Outlet/>

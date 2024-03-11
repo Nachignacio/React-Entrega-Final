@@ -1,11 +1,13 @@
 #root{
-    background-image: url("../img/background-react.jpg");
+    background-image: url("../../img/backgroundunsplash.jpg");
+    background-size: cover;
     height: 100%;
 }
 
 *{
     margin: 0px;
     padding: 0px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 button{

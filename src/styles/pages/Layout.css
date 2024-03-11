@@ -16,11 +16,11 @@
 .background header{
     display: flex;
     justify-content: center;
+    color: rgb(132, 199, 253);
 }
 
 .background{
     position: relative;
-    background-color: radial-gradient(darkcyan,grey);
     width: 100%;
     max-width: 100vw;
     min-height: 100vh; /* La unica forma de que el fondo ocupe todo el viewport*/
@@ -35,4 +35,17 @@
 .background h1{
     display: inline;
     margin: 30px;
+}
+
+.background button{
+    position: absolute;
+    right: 0;
+    margin: 35px;
+}
+
+.background #current{
+    color: rgb(132, 199, 253);
+    position: absolute;
+    right: 0;
+    margin: 35px;
 }

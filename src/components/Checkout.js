@@ -28,7 +28,7 @@ function Checkout(){
         await addDoc(purchaseOrdersReference, purchaseObjects);
     }
 
-    
+    console.log("Cart :", cart);
 
     useEffect(() => {
         addPurchaseOrder(); //Ejecuto la función en cuanto se carga la página de orden de compra
@@ -45,28 +45,16 @@ function Checkout(){
         return () => unsubscribe();
     }, []);
 
-    async function logOut(){
-        await signOut(auth);
-        setCurrentUser(null);
-        console.log(currentUser);
-    }
-
+    
     return(
         <div className="checkoutContainer">
             <div className="checkout">
                 {
                     currentUser ? (<div>
                         <Brief ordenCompra={ordenCompra}/>
-                        
-                        <button onClick={logOut}>Sign Out</button>
                         </div>
                         ) : (<Auth/>)
                 }
-                <Link to="/" id="productLink">
-                    <button id="products">
-                    Products
-                    </button>
-                </Link>
             </div>
         </div>
     )

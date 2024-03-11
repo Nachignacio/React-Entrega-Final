@@ -1,0 +1,36 @@
+#auth{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    width: 400px;
+    padding: 20px;
+}
+
+#auth label{
+    margin: 10px;
+    align-self: center;
+}
+
+#auth input{
+    margin: 10px;
+    background-color: grey;
+    border-style: none;
+    border-bottom: solid;
+    display: flex;
+    font-size: large;
+    text-align: center;
+}
+
+#auth button{
+    margin-top: 20px;
+}
+
+#auth input:focus{
+    outline: none;
+}
+
+#auth input::placeholder{
+    color: black;
+    display: flex;
+    text-align: center;
+}

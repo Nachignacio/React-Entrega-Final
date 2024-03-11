@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import "../styles/components/addItemButton.css";
 
 function AddItemButton({item, counter, handleOnAdd, addedCart}){
     return(
-        <div>
+        <div className="addItemButton">
             {
                 counter > 0 ? (
                     <div className="cartButtons">

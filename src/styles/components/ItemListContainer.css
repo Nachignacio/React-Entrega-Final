@@ -16,7 +16,8 @@
     display: flex;
     justify-items: center;
     flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    align-items: center; 
     text-align: center;
     background-color: rgb(173, 173, 173);
     -webkit-box-shadow: 17px 18px 33px 0px rgba(0,0,0,0.75);
@@ -27,6 +28,13 @@
 
 .catalog .Item:hover{
     transform: scale(1.05);
+}
+
+#loading{
+    font-size: 2rem;
+    text-align: center; /* Center the text horizontally */
+    margin-top: 200px !important; /* Adjust the margin as needed */
+    color: rgb(132, 199, 253);
 }
 
 .catalog .Item h1{

@@ -6,8 +6,11 @@
     margin-top: 30px;
 }
 
-.Item .viewDetail{
+.Item .viewDetail button{
     transition: 0.5s;
+    position: relative;
+    top: 20px;
+    min-width: 100px;
 }
 
 .Item .viewDetail:hover{

@@ -1,3 +1,16 @@
 .brief{
-    
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.brief #productLink{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    text-decoration: none;
+}
+
+.brief button{
+    margin: 15px;
 }

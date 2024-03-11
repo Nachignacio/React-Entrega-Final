@@ -1,5 +1,5 @@
 .cartItem{
-    background-color: darkcyan;
+    background-color: rgba(0, 139, 139, 0.356);
     border-radius: 15px;
     -webkit-box-shadow: 17px 18px 33px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 17px 18px 33px 0px rgba(0,0,0,0.75);
@@ -16,6 +16,8 @@
 .cartItem #quantity{
     position: absolute;
     left: 50%;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .cartItem h3{
@@ -27,11 +29,15 @@
 .cartItem #pricePerUnit{
     position: absolute;
     left: 65%;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .cartItem #subtotal{
     position: absolute;
-    left: 85%;
+    left: 82%;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .cartItem button{

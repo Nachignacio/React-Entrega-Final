@@ -3,6 +3,9 @@ import "../styles/components/ItemCounter.css";
 import { Link } from "react-router-dom";
 import {CartContext} from "../context/CartContext";
 import AddItemButton from "./AddItemButton";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../config/firebase";
+import "../styles/components/itemQuantitySelector.css";
 
 
 function ItemQuantitySelector({init, item}){
@@ -15,13 +18,22 @@ function ItemQuantitySelector({init, item}){
 
     const {cart, addProduct} = useContext(CartContext);
 
+    /*const cartReference = collection(db, "Cart");*/
+
+    /*async function addCart(){
+        
+        const purchaseObjects = cart.reduce((acc, cur, index) => ({...acc, [`Nombre${index}`]: cur.Nombre, [`Cantidad${index}`]: cur.cant}),{}) //Adapto lo que tengo en el carrito a la informacion que me interesa para la orden de compra
+
+        console.log("purchaseObjects :", purchaseObjects);
+
+        await addDoc(cartReference, cart);
+    }*/
 
 
     function handleOnAdd(cant){
         
         addProduct(item, cant);
         setCantComprada(cant);
-        console.log("El cart es: ", cart);
     }
 
     useEffect(() => {

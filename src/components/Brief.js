@@ -4,6 +4,8 @@ import { addDoc, collection, deleteDoc, doc, getDocs } from "firebase/firestore"
 import {db} from "../config/firebase"
 import {auth} from "../config/firebase";
 import "../styles/components/Brief.css"
+import { Link } from "react-router-dom";
+import { signOut } from "firebase/auth";
 
 function Brief(){
 
@@ -11,6 +13,7 @@ function Brief(){
     
     const purchaseOrdersReference = collection(db, "Ordenes de Compra");
     const [ordenesData, setOrdenesData] = useState([]);
+    const [currentUser, setCurrentUser] = useState(null);
 
 
     async function getPurchaseOrder(){ //Obtengo la data de la base de datos
@@ -21,15 +24,11 @@ function Brief(){
             id:doc.id
     }))
         setOrdenesData(data);
-        console.log("ordenes Data: ", ordenesData);
 }
     useEffect(() => {
         getPurchaseOrder();
-    },[])
+    },)
     
-    const array = [...ordenesData];
-
-    console.log("array: ", array);
 
     
     /*function objectMap(obj, fn) { //Creo una función similar al map de array pero para objetos
@@ -40,7 +39,12 @@ function Brief(){
         return newObject;
     }*/
 
-    console.log("ordenes Data: ", ordenesData);
+    async function logOut(){
+        await signOut(auth);
+        setCurrentUser(null);
+        console.log(currentUser);
+    }
+
 
     
     async function deletePurchaseOrder(id){
@@ -50,16 +54,28 @@ function Brief(){
         console.log(ordenesData);
     }
 
+    
+    async function clearDatabase() {
+        const querySnapshot = await getDocs(purchaseOrdersReference);
+        querySnapshot.forEach((doc) => {
+            deleteDoc(doc.ref);
+        });
+    }
+    
+    /* clearDatabase();*/ //Funcion hecha para limpiar el data base, descomentar cuando se quiera limpiar
+
+    /* <button onClick={() => clearDatabase()}>Clear Database</button> Agregar esto al JSX cuando se quiera poner el boton para limpiar la base de datos*/
+
     let finalIndex = ordenesData.length - 1;
     let ordenCompra = ordenesData[finalIndex];
-    console.log("ordenCompra: ", ordenCompra);
     
     var purchase = []; //Almaceno en este array lo que quiero mostrar de lo extraido de la orden de compra
+
     for(let i=0; i < cart.length; ++i){
         purchase.push(cart[i].Nombre);
         purchase.push(cart[i].cant);
     }
-    console.log("purchase: ", purchase);
+
     return(
         <div className="brief">
             Your purchase order is:
@@ -76,12 +92,18 @@ function Brief(){
                 Purchase order ID: {ordenCompra ? ordenCompra.id : ""}<br/>
             </span>
             <span>
-                Ordering user: {auth?.currentUser?.email}
+                Ordering user: {auth?.currentUser?.email ? auth.currentUser.email : "Loading"}
             </span>
             <p>
                 Total price: ${price}
             </p>
-            <button onClick={() => deletePurchaseOrder(ordenesData[0].id)}>Clear Database</button>
+            <button onClick={() => clearDatabase()}>Clear Database</button>
+            <button onClick={logOut}>Sign Out</button>
+            <Link to="/" id="productLink">
+                <button id="products">
+                    Products
+                </button>
+            </Link>
         </div>
     )
 }

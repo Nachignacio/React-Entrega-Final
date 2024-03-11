@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import {auth, googleProvider} from "../config/firebase";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, signInWithPopup } from "firebase/auth";
+import "../styles/components/Auth.css"
 
 function Auth(){
 
@@ -70,12 +71,12 @@ function Auth(){
                         </button>
                     </div>
                 ) : (
-                    <div>
+                    <div id="auth">
                         <label htmlFor="email">Email: </label>
                         <input type="text" placeholder="name@email.com" id="email" onChange={(e) => setEmail(e.target.value)}/>
                         <label htmlFor="password">Password: </label>
                         <input type="text" id="password" onChange={(e) => setPassword(e.target.value)}/>
-                        <button onClick={handleSignUp}>SignUp</button>
+                        <button onClick={handleSignUp}>Sign Up / Log In</button>
                         <button onClick={signInWithGoogle}>Log In with Google</button>
                         {signError ? (
                             <div>

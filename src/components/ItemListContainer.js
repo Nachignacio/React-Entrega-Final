@@ -13,6 +13,7 @@ function ItemListContainer(url){
     const initial=1;
     
     const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     const {categoryId} = useParams();
 
@@ -34,18 +35,24 @@ function ItemListContainer(url){
     useEffect(()=>{
         
         async function getItems(){
+            setLoading(true);
             const productsData = await getDocs(itemsCollectionReference);
             const filteredData = productsData.docs.map( (doc)=>({
                 ...doc.data(),
                 id:doc.id
             }))
             storedProducts = categoryId? filteredData.filter((prod) => prod.Categoria === categoryId) : filteredData;
+            setLoading(false);
             setProducts(storedProducts);
         }
         getItems();
     },[categoryId]);
 
-    
+    if(loading){
+        return (<div id="loading">
+            <h1>Loading...</h1>
+            </div>)
+        }
 
 
     /* async function addItems(prod){
