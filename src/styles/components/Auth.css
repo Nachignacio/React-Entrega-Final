@@ -34,3 +34,7 @@
     display: flex;
     text-align: center;
 }
+
+#auth button{
+    position: relative;
+}

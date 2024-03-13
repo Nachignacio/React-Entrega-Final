@@ -42,11 +42,6 @@ function Auth(){
     }
 
 
-    useEffect(
-        () => {
-            console.log(auth?.currentUser?.email)
-    },[auth])
-
     async function logOut(){
         await signOut(auth);
         setCurrentUser({});

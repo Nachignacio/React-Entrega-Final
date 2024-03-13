@@ -10,17 +10,19 @@
 
 .Cart .cartItem{
     width: 95%;
+    padding: 0;
 }
 
 .Cart #clearCart{
     display: block;
     width: 150px;
+    margin: -30px;
 }
 
 .Cart #products{
     display: block;
     width: 100px;
-    margin: 25px;
+    margin: 50px;
     transition: 0.5s;
 }
 
@@ -33,12 +35,19 @@
     color: white;
 }
 
-.Cart #checkout{
-    margin: 25px;
-    padding: 10px;
-    width: 25%;
+.Cart #checkoutButton{
+    position: relative;
+    margin: 50px;
+    width: 100%;
 }
 
+.Cart #checkout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center horizontally */
+    height: auto;
+  }
 .Cart #checkout:hover{
     color: white;
 }
@@ -49,7 +58,7 @@
 }
 
 .Cart #checkoutButton{
-    width: 100%;
+    width: 200px;
 }
 .Cart .cartPrice{
     display: flex;
@@ -65,4 +74,12 @@
     padding: 15px;
     font-weight: 800;
     font-size: x-large;
+}
+
+.Cart button{
+    position: relative;
+}
+
+.Cart h1{
+    color: rgb(132, 199, 253);
 }

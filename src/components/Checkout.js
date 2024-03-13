@@ -17,22 +17,17 @@ function Checkout(){
 
     const [currentUser, setCurrentUser] = useState(null);
 
-    let ordenCompra = 1;
-
     async function addPurchaseOrder(){
         
         const purchaseObjects = cart.reduce((acc, cur, index) => ({...acc, [`Nombre${index}`]: cur.Nombre, [`Cantidad${index}`]: cur.cant}),{}) //Adapto lo que tengo en el carrito a la informacion que me interesa para la orden de compra
 
-        console.log("purchaseObjects :", purchaseObjects);
 
         await addDoc(purchaseOrdersReference, purchaseObjects);
     }
 
-    console.log("Cart :", cart);
 
     useEffect(() => {
         addPurchaseOrder(); //Ejecuto la función en cuanto se carga la página de orden de compra
-        console.log("Cart: ",cart)
         const unsubscribe = auth.onAuthStateChanged(user => { //Chequeo si cambio el estado de autenticacion
             if (user) {
                 setCurrentUser(user);
@@ -51,7 +46,7 @@ function Checkout(){
             <div className="checkout">
                 {
                     currentUser ? (<div>
-                        <Brief ordenCompra={ordenCompra}/>
+                        <Brief/>
                         </div>
                         ) : (<Auth/>)
                 }

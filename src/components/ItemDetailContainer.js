@@ -13,7 +13,6 @@ const ItemDetailContainer = () => {
 
     const {detailId} = useParams();
 
-    console.log("detailID is: ", detailId);
 
     
     /*useEffect(()=>{
@@ -39,9 +38,7 @@ const ItemDetailContainer = () => {
                 ...doc.data(),
                 id:doc.id
             }))
-            console.log("Filtered is: ", filteredData);
             detailed = filteredData.find((prod) => prod.ID == detailId);
-            console.log("Detailed is: ", detailed);
             setDetails(detailed);
         }
         getItemDetails()},[detailId]);

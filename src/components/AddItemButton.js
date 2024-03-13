@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
 import "../styles/components/addItemButton.css";
+import { collection } from "firebase/firestore";
+import { db } from "../config/firebase";
 
 function AddItemButton({item, counter, handleOnAdd, addedCart}){
+
+    const cartReference = collection(db, "Carrito");
+
     return(
         <div className="addItemButton">
             {

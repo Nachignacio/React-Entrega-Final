@@ -16,7 +16,7 @@ const Item = ({item, initial}) => {
                 ${item.Precio}
             </h2>
             <Link to={`/detail/${item.ID}`} className="viewDetail">
-                <button onClick={() => console.log("itemId es: ", item.ID)}>
+                <button>
                     View details
                 </button>
             </Link>

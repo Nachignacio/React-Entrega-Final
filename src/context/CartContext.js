@@ -1,4 +1,6 @@
+import { collection, deleteDoc, getDocs } from "firebase/firestore";
 import { createContext, useState, useEffect } from "react";
+import { db } from "../config/firebase";
 
 export const CartContext = createContext();
 
@@ -8,6 +10,8 @@ export function CartProvider({children}){
 
     const [quantity, setQuantity] = useState(0);
     const [price, setTotalPrice] = useState(0)
+
+    const cartReference = collection(db, "Carrito");
 
     let signedIn = true;
 
@@ -39,8 +43,12 @@ export function CartProvider({children}){
         setCart(cartNuevo);
     }
 
-    function clearCart(){
+    async function clearCart(){
         setCart([]);
+        const querySnapshot = await getDocs(cartReference);
+        querySnapshot.forEach((doc) => {
+            deleteDoc(doc.ref);
+        });
     }   
     
     

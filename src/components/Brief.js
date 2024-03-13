@@ -14,6 +14,7 @@ function Brief(){
     const purchaseOrdersReference = collection(db, "Ordenes de Compra");
     const [ordenesData, setOrdenesData] = useState([]);
     const [currentUser, setCurrentUser] = useState(null);
+    const [ordenCompra, setOrdenCompra] = useState("Loading...");
 
 
     async function getPurchaseOrder(){ //Obtengo la data de la base de datos
@@ -27,7 +28,7 @@ function Brief(){
 }
     useEffect(() => {
         getPurchaseOrder();
-    },)
+    },[])
     
 
     
@@ -42,7 +43,6 @@ function Brief(){
     async function logOut(){
         await signOut(auth);
         setCurrentUser(null);
-        console.log(currentUser);
     }
 
 
@@ -51,7 +51,6 @@ function Brief(){
         const order = doc(db,"Ordenes de Compra", id);
         await deleteDoc(order);
         getPurchaseOrder();
-        console.log(ordenesData);
     }
 
     
@@ -67,7 +66,11 @@ function Brief(){
     /* <button onClick={() => clearDatabase()}>Clear Database</button> Agregar esto al JSX cuando se quiera poner el boton para limpiar la base de datos*/
 
     let finalIndex = ordenesData.length - 1;
-    let ordenCompra = ordenesData[finalIndex];
+
+    useEffect(()=>{
+        setOrdenCompra(ordenesData[finalIndex]);
+    },[ordenesData]);
+    
     
     var purchase = []; //Almaceno en este array lo que quiero mostrar de lo extraido de la orden de compra
 
@@ -89,7 +92,7 @@ function Brief(){
                 ) : null}
             </div>))}
             <span>
-                Purchase order ID: {ordenCompra ? ordenCompra.id : ""}<br/>
+                Purchase order ID: {ordenCompra ? ordenCompra.id : "Loading..."}<br/>
             </span>
             <span>
                 Ordering user: {auth?.currentUser?.email ? auth.currentUser.email : "Loading"}
@@ -97,7 +100,7 @@ function Brief(){
             <p>
                 Total price: ${price}
             </p>
-            <button onClick={() => clearDatabase()}>Clear Database</button>
+            
             <button onClick={logOut}>Sign Out</button>
             <Link to="/" id="productLink">
                 <button id="products">

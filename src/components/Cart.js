@@ -1,12 +1,16 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import CartItem from "./CartItem";
 import { Link } from "react-router-dom";
+import {db} from "../config/firebase"
+import { addDoc, collection, deleteDoc, getDocs } from "firebase/firestore";
 import "../styles/components/Cart.css";
 
 function Cart(){
 
     const {cart, clearCart, quantity, price} = useContext(CartContext);
+    const [loading, setLoading] = useState(true);
+    
 
     return (
         <div className="Cart">
