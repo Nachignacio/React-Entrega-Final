@@ -44,8 +44,8 @@
 }
 
 .background #current{
-    color: rgb(132, 199, 253);
+    color: #84c7fd;
     position: absolute;
     right: 0;
-    margin: 35px;
+    margin: 45px 150px 35px 35px;
 }

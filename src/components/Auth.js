@@ -62,7 +62,7 @@ function Auth(){
                         <p>Current user: {auth?.currentUser.email}
                         </p>
                         <button onClick={logOut}>
-                            SignOut
+                            Sign Out
                         </button>
                     </div>
                 ) : (

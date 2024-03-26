@@ -3,6 +3,7 @@ import NavBar from "../components/NavBar"
 import "../styles/pages/Layout.css";
 import {auth} from "../config/firebase";
 import { useEffect, useState } from "react";
+import { signOut } from "firebase/auth";
 
 
 function Layout(){
@@ -14,12 +15,24 @@ function Layout(){
             setCurrentUser(user);
         })});
 
+        async function logOut(){
+            await signOut(auth);
+            setCurrentUser({});
+        }
+
     return(
         <div className="background">
             <header>
                 <h1> Virtual Store </h1>
-                {auth?.currentUser ? (<p id="current">Current user: &nbsp;
-                    {currentUser.email} </p>) : (<Link to="/Auth">
+                {auth?.currentUser ? (
+                    <div>
+                        <p id="current">
+                            Current user: &nbsp;{currentUser.email} 
+                        </p>
+                        <button onClick={logOut}>
+                            Sign Out
+                        </button>
+                    </div>) : (<Link to="/Auth">
                     <button>
                         Sign Up / Log In
                     </button>

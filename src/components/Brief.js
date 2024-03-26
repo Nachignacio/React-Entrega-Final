@@ -86,17 +86,17 @@ function Brief(){
             <div>
                 {(index-1)%2 ? (
                     <div>
-                        <p>Product: {array[index]}</p>
-                        <p>Quantity: {array[index+1]}</p>
+                        <p><font color="#024e8b">Product:</font> {array[index]}</p>
+                        <p><font color="#024e8b">Quantity:</font> {array[index+1]}</p>
                     </div>
                 ) : null}
             </div>))}
-            <span>
-                Purchase order ID: {ordenCompra ? ordenCompra.id : "Loading..."}<br/>
-            </span>
-            <span>
-                Ordering user: {auth?.currentUser?.email ? auth.currentUser.email : "Loading"}
-            </span>
+            <p>
+            <font color="#024e8b">Purchase order ID:</font> {ordenCompra ? ordenCompra.id : "Loading..."}<br/>
+            </p>
+            <p>
+                <font color="#024e8b">Ordering user:</font> {auth?.currentUser?.email ? auth.currentUser.email : "Loading"}
+            </p>
             <p>
                 Total price: ${price}
             </p>
